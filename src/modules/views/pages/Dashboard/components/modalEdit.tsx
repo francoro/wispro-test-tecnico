@@ -4,8 +4,7 @@ import Button from '@material-ui/core/Button';
 import {useStyles} from './styles'
 import { useDispatch } from 'react-redux';
 import { editSelectedUser } from '../../../../../store/users/reducer';
-import userEvent from '@testing-library/user-event';
-export const ModalEdit = ({ user }: any) => {
+export const ModalEdit = ({ user, handleCloseEditModal }: any) => {
     const [name, setName] = useState(user.name)
     const [lastName, setLastName] = useState(user.lastName)
     const [address, setAddress] = useState(user.address)
@@ -25,6 +24,7 @@ export const ModalEdit = ({ user }: any) => {
             id: user.id
         };
         dispatch(editSelectedUser(userToEdit))
+        handleCloseEditModal()
     }
 
     const classes = useStyles();

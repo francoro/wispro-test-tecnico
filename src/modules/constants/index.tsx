@@ -4,7 +4,7 @@ export const users = [{
     email: "franco@gmail.com",
     id: "12345678",
     createdAt: '01/01/2021',
-    address: 'street 123',
+    address: 'Heath Acres 123',
     access: [{
         day: 'Monday',
         times: 555
@@ -22,12 +22,12 @@ export const users = [{
         times: 999
     }]
 },{
-    name: "Aranco",
-    lastName: "Coronel",
-    email: "franco@gmail.com",
+    name: "Melanie ",
+    lastName: "Cress",
+    email: "melanie@gmail.com",
     id: "22345678",
-    createdAt: '01/01/2021',
-    address: 'street 123',
+    createdAt: '01/03/2021',
+    address: 'Nursery Parade 123',
     access: [{
         day: 'Monday',
         times: 25
@@ -45,12 +45,12 @@ export const users = [{
         times: 77
     }]
 },{
-    name: "Franco",
-    lastName: "Aoronel",
-    email: "franco@gmail.com",
+    name: "Ash",
+    lastName: "Paul",
+    email: "ash@gmail.com",
     id: "32345678",
-    createdAt: '01/01/2021',
-    address: 'street 123',
+    createdAt: '11/01/2020',
+    address: 'Selsdon Avenue 123',
     access: [{
         day: 'Monday',
         times: 100
@@ -68,12 +68,12 @@ export const users = [{
         times: 300
     }]
 },{
-    name: "Franco",
-    lastName: "Coronel",
-    email: "Aranco@gmail.com",
+    name: "Nydia",
+    lastName: "Patton",
+    email: "nydia@gmail.com",
     id: "42345678",
-    createdAt: '01/01/2021',
-    address: 'street 123',
+    createdAt: '3/12/2000',
+    address: 'Auchencruive 123',
     access: [{
         day: 'Monday',
         times: 120
@@ -91,12 +91,12 @@ export const users = [{
         times: 100
     }]
 },{
-    name: "Franco",
-    lastName: "Coronel",
-    email: "franco@gmail.com",
+    name: "Juan",
+    lastName: "Rodriguez",
+    email: "juan@gmail.com",
     id: "52345678",
-    createdAt: '02/01/2020',
-    address: 'atreet 123',
+    createdAt: '06/01/2020',
+    address: 'Crossfield Park 123',
     access: [{
         day: 'Monday',
         times: 1

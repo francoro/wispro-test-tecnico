@@ -9,8 +9,8 @@ import Paper from '@material-ui/core/Paper';
 import { useEffect, useState } from 'react';
 import { getUsers, setUsersSort } from '../../../../store/users/reducer';
 import { useSelector, useDispatch } from 'react-redux'
-import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
-import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import { users as userData } from '../../../constants';
 import { useSortableData } from './hooks/useSortableData';
 import TextField from '@material-ui/core/TextField';
@@ -25,6 +25,25 @@ import {Graphs} from './components/Graphs'
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
+  },
+  modalEdit: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    '& .MuiFormControl-root': {
+      marginBottom: '25px',
+      marginRight: '25px'
+  }
+  },
+  containerSearch: {
+    margin: '25px',
+    '& .MuiButtonBase-root': {
+      width: '84px',
+      height: '31px',
+      marginTop: '16px',
+      marginBottom: '16px',
+      marginLeft: '16px'
+    }
   }
 });
 
@@ -35,7 +54,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     dispatch(getUsers(userData))
-  }, [setUsersSort])
+  }, [dispatch])
 
   const { items, requestSort, sortConfig } = useSortableData(users.users);
   const getSort = (name: string) => {
@@ -112,6 +131,7 @@ const Dashboard = () => {
   return (
     <div>
       <>
+      <div className={classes.containerSearch}>
         <TextField
           label="Search by"
           value={searchText}
@@ -120,6 +140,7 @@ const Dashboard = () => {
         <Button variant="contained" color="primary" onClick={handleSearch}>
           Search
       </Button>
+      </div>
 
         <TableContainer component={Paper}>
           <Table className={classes.table} size="small">
@@ -130,12 +151,13 @@ const Dashboard = () => {
                   return (
                     <TableCell align={item.field === 'id' ? "left" : 'right'} key={item.description} onClick={() => requestSort(item.field)}>
                       {item.description}
-                      {sort === 'ascending' ? <ArrowDownwardIcon /> : <ArrowUpwardIcon />}
+                      {sort === 'ascending' ? <ArrowDropDownIcon /> : <ArrowDropUpIcon />}
                     </TableCell>
                   )
                 })}
                 <TableCell>Edit</TableCell>
                 <TableCell>Delete</TableCell>
+                <TableCell>Access Times</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -160,15 +182,16 @@ const Dashboard = () => {
         <Modal
           open={isModalOpen}
           onClose={handleCloseEditModal}
+          className={classes.modalEdit}
         >
-          <ModalEdit user={user} />
+          <ModalEdit user={user} handleCloseEditModal={handleCloseEditModal} />
         </Modal>
 
         <Modal
           open={isModalOpenAccess}
           onClose={handleCloseAccessModal}
         >
-          <AccessGraph user={userAccess} />
+          <AccessGraph user={userAccess} handleCloseAccessModal={handleCloseAccessModal} />
         </Modal>
         <Graphs />
       </>

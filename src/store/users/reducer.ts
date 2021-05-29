@@ -20,7 +20,6 @@ const users = createSlice({
       state.users = payload.users
     },
     editUser: (state: IUser, {payload}: any) => {
-      debugger
       const idUser = [...state.users].findIndex(user => user.id === payload.user.id)
       const users = [...state.users]
       users[idUser] = payload.user
